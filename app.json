@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Pantry Pals",
+    "slug": "pantry_pals",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/splashh.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splashh.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F54748"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/splashh.png",
+        "backgroundColor": "#F54748"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
