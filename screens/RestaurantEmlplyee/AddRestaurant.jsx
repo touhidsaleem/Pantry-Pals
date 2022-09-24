@@ -10,6 +10,7 @@ const AddRestaurant = ({ navigation, route }) => {
     const [restaurantName, setRestaurantName] = useState('')
     const [restaurantAddress, setRestaurantAddress] = useState('')
     const [restaurantDescription, setRestaurantDescription] = useState('')
+    const [restaurantRating, setRestaurantRating] = useState('')
     const [data, setData] = useState('');
 
     useEffect(() => {
@@ -62,17 +63,19 @@ const AddRestaurant = ({ navigation, route }) => {
 
     const AddRestaurant = (id) => {
         try {
-            db.collection("restaurants").doc(route.params.id).collection("restaurantData").add({
+            db.collection("verifiedRestaurants").add({
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                 restaurantImage: image,
                 restaurantName: restaurantName,
-                restaurantAddress: restaurantAddress,
+                restaurantLocation: restaurantAddress,
                 restaurantDescription: restaurantDescription,
+                restaurantRating: restaurantRating,
             })
             setImage('');
             setRestaurantName('');
             setRestaurantAddress('');
             setRestaurantDescription('')
+            setRestaurantRating('')
             console.log("data Pushed")
         } catch (err) {console.log(err.message)}
     }
@@ -122,6 +125,16 @@ const AddRestaurant = ({ navigation, route }) => {
                         caretHidden
                         onChangeText={setRestaurantDescription}
                         value={restaurantDescription}
+                    />
+                </View>
+                <View className="">
+                    <Text className="absolute left-2" style={{ top: 13, zIndex: 555, backgroundColor: '#FFF', color: '#F54748' }}> Rating </Text>
+                    <TextInput
+                        className="text-xl p-2 px-3 mt-6 rounded-md font-semibold"
+                        style={{ borderWidth: 1.5, borderColor: '#F54748', color: '#2E2828' }}
+                        caretHidden
+                        onChangeText={setRestaurantRating}
+                        value={restaurantRating}
                     />
                 </View>
 

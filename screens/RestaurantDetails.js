@@ -4,7 +4,6 @@ import { Divider } from '@rneui/themed';
 import About from '../components/customer/restaurantDetails/About';
 import MenuItem from '../components/customer/restaurantDetails/MenuItem';
 import ViewCart from '../components/customer/restaurantDetails/ViewCart';
-
 const RestaurantDetails = ({ navigation, id, restaurantName, restaurantDescription, restaurantImage }) => {
 
   return (

@@ -5,8 +5,11 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox'
 import { db } from '../../../firebaseConfig'
 import { LinearGradient } from 'expo-linear-gradient';
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
+import { useDispatch, useSelector } from 'react-redux'
+import { addToBasket, selectBasketItems } from '../../../features/basketSlice'
 
 const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
+// const dispatch = useDispatch();
 
 const foods = [
     {
@@ -81,6 +84,10 @@ const MenuItem = ({navigation, route}) => {
                 }
             )
     }, [])
+
+    // const addItemToBasket = () => {
+    //     dispatch(addToBasket({id, name, description, price, image}))
+    // }
 
     if (loading) {
         return (
@@ -223,6 +230,7 @@ const MenuItem = ({navigation, route}) => {
                 <View key={id}>
                     <View className="flex-row justify-between items-center m-3">
                         <View className="flex-row">
+                            {/* <BouncyCheckbox iconStyle={{ borderColor: "lightgray" }} fillColor="#F54748" onPress={addItemToBasket} /> */}
                             <BouncyCheckbox iconStyle={{ borderColor: "lightgray" }} fillColor="#F54748" />
                             <FoodInfo food={food} />
                             {/* <View className="justify-evenly w-60">

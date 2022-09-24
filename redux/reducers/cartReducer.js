@@ -1,5 +1,5 @@
 let defaultState = {
-    selectedItems: { items: [], restaurantName: "" },
+    selectedItems: { items: [], restaurantName: '' },
 }
 
 let cartReducer = (state = defaultState, action) => {
@@ -11,7 +11,7 @@ let cartReducer = (state = defaultState, action) => {
                 restaurantName: action.payload.restaurantName,
             };
 
-            console.log(newState);
+            console.log(newState, "👉");
             return newState;
         }
 

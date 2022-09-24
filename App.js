@@ -14,8 +14,8 @@ import OrderExpand from './screens/OrderExpand';
 import RestaurantTabs from './components/RestaurantEmployee/RestaurantTabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from './context';
-// import { Provider as ReduxProvider } from 'react-redux';
-// import { store } from './redux/store'
+import { Provider as ReduxProvider } from 'react-redux';
+import { store } from './store'
 
 
 export default function App() {
@@ -82,8 +82,8 @@ export default function App() {
   // }
 
   return (
-    // <ReduxProvider store={store}>
     // <AuthContext.Provider value={authContext}>
+    // <ReduxProvider store={store}>
       <NavigationContainer>
         <TailwindProvider preview={true}>
           {/* <Stack.Navigator>
@@ -130,8 +130,8 @@ export default function App() {
           </Stack.Navigator>
         </TailwindProvider>
       </NavigationContainer>
-    // {/* </AuthContext.Provider> */}
     // </ReduxProvider>
+    // {/* </AuthContext.Provider> */}
   );
 }
 

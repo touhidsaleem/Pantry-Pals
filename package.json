@@ -21,6 +21,7 @@
     "expo": "^46.0.0",
     "expo-firebase-recaptcha": "^2.3.0",
     "expo-image-picker": "^13.3.1",
+    "expo-linear-gradient": "~11.4.0",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "firebase": "^9.6.11",
@@ -40,9 +41,9 @@
     "react-native-web": "~0.18.7",
     "react-native-webview": "^11.23.0",
     "react-redux": "^8.0.2",
+    "redux": "^4.2.0",
     "tailwindcss-react-native": "^1.7.10",
-    "tslib": "^2.4.0",
-    "expo-linear-gradient": "~11.4.0"
+    "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",

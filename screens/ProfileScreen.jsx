@@ -38,7 +38,7 @@ const ProfileScreen = ({ navigation }) => {
 
       <View className="w-11/12 h-44 mt-4 p-4 justify-center items-center rounded-2xl bg-white absolute top-28 left-4" style={{ elevation: 10 }}>
         <Avatar rounded source={{ uri: auth?.current?.photoURL || "https://cdn-icons-png.flaticon.com/512/64/64572.png" }} style={{ width: 75, height: 75 }} />
-        <Text className="text-xl mt-2 font-semibold">{localData.name}</Text>
+        <Text className="text-xl mt-2 font-semibold">Touhid</Text>
         <Text className="text-md font-semibold" style={{ color: "grey" }}>{auth?.currentUser?.phoneNumber}</Text>
       </View>
 
