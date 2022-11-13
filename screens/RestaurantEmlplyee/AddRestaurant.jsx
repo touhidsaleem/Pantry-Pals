@@ -76,7 +76,7 @@ const AddRestaurant = ({ navigation, route }) => {
             setRestaurantAddress('');
             setRestaurantDescription('')
             setRestaurantRating('')
-            console.log("data Pushed")
+            console.log("Restaurant Pushed")
         } catch (err) {console.log(err.message)}
     }
 

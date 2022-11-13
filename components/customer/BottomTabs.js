@@ -40,53 +40,23 @@ const BottomTabs = () => {
             })}
         >
             <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-            <Tab.Screen name="FavouriteRestaurants" component={FavouriteRestaurants} options={{ tabBarLabel: 'Favourite', headerShown: false }} />
-            <Tab.Screen name="PreviewOrders" component={PreviewOrders}
-                options={{ tabBarLabel: 'Orders', headerShown: true,  title: "Your Orders",
+            <Tab.Screen name="FavouriteRestaurants" component={FavouriteRestaurants} options={{
+                tabBarLabel: 'Favourites', headerShown: true, title: "Your Favourites",
                 headerBackTitleVisible: true,
                 headerStyle: { backgroundColor: "#F54748" },
-                headerTitleStyle: { color: "#FFF" }, }}
+                headerTitleStyle: { color: "#FFF" },
+            }} />
+            <Tab.Screen name="PreviewOrders" component={PreviewOrders}
+                options={{
+                    tabBarLabel: 'Orders', headerShown: true, title: "Your Orders",
+                    headerBackTitleVisible: true,
+                    headerStyle: { backgroundColor: "#F54748" },
+                    headerTitleStyle: { color: "#FFF" },
+                }}
             />
             <Tab.Screen name="Profile" component={ProfileScreen} options={{ tabBarLabel: 'Profile', headerShown: false }} />
         </Tab.Navigator>
     )
 }
-
-
-// const BottomTabs = () => {
-//     const navigation = useNavigation();
-
-//     const Icon = (props) => (
-//         <>
-//             <FontAwesome5 name={props.icon} size={24} style={{ alignSelf: "center", marginBottom: 3 }} />
-//             <Text style={{ fontSize: 10 }} >{props.text}</Text>
-//         </>
-//     )
-
-//     return (
-//         <View className="flex-row p-2 px-4 justify-between bg-white rounded-t-xl">
-//             {/* <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('Home')} >
-//                 <Icon icon="home" text="Home" styel={{ color: '#F54748' }} />
-//             </TouchableOpacity> */}
-//             <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('Home')} >
-//                 <FontAwesome5 name='home' size={24} style={{ alignSelf: "center", marginBottom: 3}} />
-//                 <Text style={{ fontSize: 10 }} >Home</Text>
-//             </TouchableOpacity>
-//             <TouchableOpacity activeOpacity={0.5}>
-//                 <Icon icon="search" text="Browse" />
-//             </TouchableOpacity>
-//             <TouchableOpacity activeOpacity={0.5}>
-//                 <Icon icon="shopping-bag" text="Grocery" />
-//             </TouchableOpacity>
-//             <TouchableOpacity activeOpacity={0.5}>
-//                 <Icon icon="receipt" text="Orders" />
-//             </TouchableOpacity>
-//             <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('Profile')} >
-//                 <Icon icon="user" text="Account" />
-//             </TouchableOpacity>
-//         </View>
-//     )
-// }
-
 
 export default BottomTabs;

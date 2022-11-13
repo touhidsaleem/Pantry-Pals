@@ -4,21 +4,16 @@ import { get, onValue, ref, set } from "firebase/database";
 import { rdb, db } from "../firebaseConfig";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { doc, setDoc } from "firebase/firestore";
-
+import { useDispatch } from 'react-redux';
+import * as Location from "expo-location";
+// import { login } from '../features/userSlice';
 
 const UsernameInput = ({ navigation, route }) => {
     const [name, setName] = useState('');
+    const dispatch = useDispatch();
 
-
-
-
-    // useEffect(() => {
-    //     onValue(ref(rdb), (snapshot) => {
-    //         const data = snapshot.val();
-    //         console.log(data)
-    //     })
-    // }, []);  
-
+    const [location, setLocation] = useState({});
+ 
     // useEffect(() => {
     //     const unsubscribe = db.collection('users')
     //         .doc(route.params.id)
@@ -28,6 +23,22 @@ const UsernameInput = ({ navigation, route }) => {
     //         }))));
     //     return unsubscribe;
     // }, [])
+
+    useEffect(() => {
+        (async() => {
+            let {status} = Location.requestForegroundPermissionsAsync();
+
+            if (status === 'granted') {
+                console.log('location Permission granted')
+            } else {
+                console.log('permission rejected')
+            }
+
+            const loc = await Location.getCurrentPositionAsync();
+            console.log(loc);
+            setLocation(loc);
+        })
+    }, [])
 
 
     const postDataCustomer = async ({ id }) => {
@@ -39,6 +50,15 @@ const UsernameInput = ({ navigation, route }) => {
                 role: 'Customer'
             }
             await setDoc(customerData, customer)
+
+            dispatch(
+                login({
+                    name: name,
+                    phoneNumber: route.params,
+                    role: 'Customer',
+                    loggegIn: true
+                })
+            );
 
             await AsyncStorage.setItem('userData', JSON.stringify(customer));
             console.log('Phone Number is:', route.params);
@@ -59,10 +79,19 @@ const UsernameInput = ({ navigation, route }) => {
             }
             await setDoc(RestaurantEmployeeData, RestaurantEmployee)
 
+            dispatch(
+                login({
+                    name: name,
+                    phoneNumber: route.params,
+                    role: 'Restaurant Employee',
+                    loggegIn: true
+                })
+            );
+
             await AsyncStorage.setItem('userData', JSON.stringify(RestaurantEmployee));
             console.log('Phone Number is:', route.params);
             console.log('username is:', name);
-            navigation.replace('RestaurantTabs',  {
+            navigation.replace('RestaurantTabs', {
                 screen: 'RestaurantHome',
             })
         } catch (error) { console.log(error.message) };
@@ -91,6 +120,7 @@ const UsernameInput = ({ navigation, route }) => {
                         style={{ borderWidth: 1.5, borderColor: '#F54748' }}
                         caretHidden
                     />
+                    <Text>{JSON.stringify(location)}</Text>
 
                     <View className="flex-1 justify-end items-center w-full">
                         <TouchableOpacity activeOpacity={0.5} disabled={!name} onPress={postDataCustomer} style={{ width: '100%' }}>

@@ -4,13 +4,13 @@ import { auth } from '../../firebaseConfig';
 import { Avatar } from '@rneui/themed';
 import { ProfileIcon } from '../../components/customer/profile/Cards';
 
-const RestaurantProfile = () => {
+const RestaurantProfile = ({navigation}) => {
 
     const signOutUser = () => {
         auth.signOut()
-            .then(() => {
-                navigation.replace("Login");
-            }).catch((error) => console.log(error.message));
+    //         .then(() => {
+    //             navigation.replace("Login");
+    //         }).catch((error) => console.log(error.message));
     }
 
     return (

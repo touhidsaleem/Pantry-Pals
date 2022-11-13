@@ -27,7 +27,7 @@ const HeaderTab = ({ navigation }) => {
             <ChevronDownIcon size={20} color="#1a1a1a" />
           </Text>
         </View>
-        <Ionicons name="person-outline" size={30} color="#1a1a1a" />
+        {/* <Ionicons name="person-outline" size={30} color="#1a1a1a" /> */}
       </View>
 
       {/* <View className="flex-row items-center space-x-2 pb-2 px-4">

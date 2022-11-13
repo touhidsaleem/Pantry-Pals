@@ -6,7 +6,7 @@ import { db } from '../../../firebaseConfig'
 import { LinearGradient } from 'expo-linear-gradient';
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
 import { useDispatch, useSelector } from 'react-redux'
-import { addToBasket, selectBasketItems } from '../../../features/basketSlice'
+// import { addToBasket, selectBasketItems } from '../../../features/basketSlice'
 
 const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
 // const dispatch = useDispatch();
@@ -15,54 +15,57 @@ const foods = [
     {
         title: "Burger",
         description: "Giant Bun, with lettuce, a patty of meat, with special Sauce",
-        price: "₹ 285.00",
+        price: "₹ 285",
         image: "https://b.zmtcdn.com/data/pictures/6/38476/1fc2c60c6d6ee5729c386c18811d8f61.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*"
     },
     {
         title: "Wok Chinese",
         description: "Have this from Wok Express",
-        price: "₹ 467.00",
+        price: "₹ 467",
         image: "https://b.zmtcdn.com/data/pictures/chains/3/18216863/a9dafd0abf342d036518bea733099f71_o2_featured_v2.jpg"
     },
     {
         title: "Chocolate Cake",
         description: "A cake with top layer Chocolate",
-        price: "₹ 800.00",
+        price: "₹ 120",
         image: "https://b.zmtcdn.com/data/pictures/chains/2/16529642/871d7282b7a07b3124784f015a37545c_o2_featured_v2.jpg"
     },
     {
         title: "WOW Momos",
         description: "Momos With special Sauce for additional blends",
-        price: "₹ 360.00",
+        price: "₹ 360",
         image: "https://b.zmtcdn.com/data/pictures/chains/8/18577178/cc7cfcafbaa312b8e003ab60181246b0_o2_featured_v2.jpg"
     },
 
     {
         title: "WOW Momos",
         description: "Momos With special Sauce for additional blends",
-        price: "₹ 360.00",
+        price: "₹ 360",
         image: "https://b.zmtcdn.com/data/pictures/chains/8/18577178/cc7cfcafbaa312b8e003ab60181246b0_o2_featured_v2.jpg"
     },
 
     {
         title: "WOW Momos",
         description: "Momos With special Sauce for additional blends",
-        price: "₹ 360.00",
+        price: "₹ 360",
         image: "https://b.zmtcdn.com/data/pictures/chains/8/18577178/cc7cfcafbaa312b8e003ab60181246b0_o2_featured_v2.jpg"
     },
 
     {
         title: "WOW Momos",
         description: "Momos With special Sauce for additional blends",
-        price: "₹ 360.00",
+        price: "₹ 360",
         image: "https://b.zmtcdn.com/data/pictures/chains/8/18577178/cc7cfcafbaa312b8e003ab60181246b0_o2_featured_v2.jpg"
     },
 
 ]
 
-const MenuItem = ({navigation, route}) => {
+const MenuItem = ({ navigation, route }) => {
     const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    // const myProducts = useSelector(state => state.product);
+    // console.log('added products', myProducts)
 
     useEffect(() => {
         db.collection("verifiedRestaurants").doc().collection('menu')
@@ -226,7 +229,7 @@ const MenuItem = ({navigation, route}) => {
 
     return (
         <ScrollView showsVerticalScrollIndicator={false} className="mb-14">
-            {foods && foods.map((food, id) => (
+               {foods && foods.map((food, id) => (
                 <View key={id}>
                     <View className="flex-row justify-between items-center m-3">
                         <View className="flex-row">
