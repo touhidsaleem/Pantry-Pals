@@ -5,15 +5,17 @@ import { rdb, db } from "../firebaseConfig";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { doc, setDoc } from "firebase/firestore";
 import { useDispatch } from 'react-redux';
+import { login } from '../features/userSlice';
 import * as Location from "expo-location";
-// import { login } from '../features/userSlice';
+
 
 const UsernameInput = ({ navigation, route }) => {
     const [name, setName] = useState('');
     const dispatch = useDispatch();
 
     const [location, setLocation] = useState({});
- 
+
+
     // useEffect(() => {
     //     const unsubscribe = db.collection('users')
     //         .doc(route.params.id)
@@ -25,8 +27,8 @@ const UsernameInput = ({ navigation, route }) => {
     // }, [])
 
     useEffect(() => {
-        (async() => {
-            let {status} = Location.requestForegroundPermissionsAsync();
+        (async () => {
+            let { status } = Location.requestForegroundPermissionsAsync();
 
             if (status === 'granted') {
                 console.log('location Permission granted')
@@ -121,6 +123,7 @@ const UsernameInput = ({ navigation, route }) => {
                         caretHidden
                     />
                     <Text>{JSON.stringify(location)}</Text>
+
 
                     <View className="flex-1 justify-end items-center w-full">
                         <TouchableOpacity activeOpacity={0.5} disabled={!name} onPress={postDataCustomer} style={{ width: '100%' }}>

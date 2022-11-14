@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { selectUser } from './features/userSlice';
 import Basket from './components/customer/restaurantDetails/Basket';
 import OrderCompleted from './screens/OrderCompleted';
-import { interpolate } from 'react-native-reanimated';
 
 const RootScreen = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -32,11 +31,11 @@ const RootScreen = () => {
         checkUser();
     }, [])
 
-    useEffect(()=> {
-        items.map(item => {
-            dispatch(addMyProducts(item));
-        })
-    },[])
+    // useEffect(()=> {
+    //     items.map(item => {
+    //         dispatch(addMyProducts(item));
+    //     })
+    // },[])
 
     const checkUser = async () => {
         try {
@@ -104,14 +103,14 @@ const RootScreen = () => {
     //     </Stack.Navigator>
     // )
     return (
-        <Stack.Navigator initialRouteName=''>
+        <Stack.Navigator initialRouteName='BottomTabs'>
             <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Username" component={UsernameInput} options={{ headerShown: false }} />
             <Stack.Screen name="BottomTabs" component={BottomTabs} options={{ headerShown: false }} />
             <Stack.Screen name="RestaurantDetails" component={RestaurantDetails} options={{ headerShown: false }} />
             <Stack.Screen name="Basket" component={Basket} options={{ headerShown: false }} />
             <Stack.Screen name="OrderCompleted" component={OrderCompleted} options={{ headerShown: false }} />
-            <Stack.Screen name="AddRestaurant" component={AddRestaurant} />
+            {/* <Stack.Screen name="AddRestaurant" component={AddRestaurant} /> */}
             <Stack.Screen name="OrderExpand" component={OrderExpand}
                 options={{
                     headerShown: true,

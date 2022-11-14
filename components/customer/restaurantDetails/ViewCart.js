@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 // import { selectBasketItems } from '../../../features/basketSlice'
 import LottieView from "lottie-react-native";
+import { db } from '../../../firebaseConfig';
+import firebase from 'firebase/compat/app';
+
 
 const ViewCart = ({ navigation }) => {
     // const items = useSelector(selectBasketItems)
@@ -11,20 +14,20 @@ const ViewCart = ({ navigation }) => {
 
     const addOrderToFireBase = () => {
         setLoading(true);
-        // const db = firebase.firestore();
-        // db.collection("orders")
-        //   .add({
-        //     items: items,
-        //     restaurantName: restaurantName,
-        //     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        //   })
-        //   .then(() => {
-        setTimeout(() => {
-            setLoading(false);
-            navigation.navigate("OrderCompleted");
-        }, 2500);
-        //   });
-    };
+        const db = firebase.firestore();
+        db.collection("orders")
+            .add({
+                items: 'items',
+                restaurantName: 'restaurantName',
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            })
+            .then(() => {
+                setTimeout(() => {
+                    setLoading(false);
+                    navigation.navigate("OrderCompleted");
+                }, 2500);
+            });
+    }
 
     const chekoutModalContent = () => {
         return (
@@ -33,8 +36,8 @@ const ViewCart = ({ navigation }) => {
                     <View style={styles.modalCheckoutContainer}>
                         <Text style={styles.restaurantName}>{'Beachside Rhino'}</Text>
                         {/* {items.map((item, index) => (
-                  <OrderItem key={index} item={item} />
-                ))} */}
+                            <OrderItem key={index} item={item} />   
+                        ))} */}
                         <View
                             style={{
                                 flexDirection: "row",
