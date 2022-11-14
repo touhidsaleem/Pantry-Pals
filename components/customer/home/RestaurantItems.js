@@ -44,7 +44,7 @@ const RestaurantItem = () => {
 
     useEffect(() => {
         db.collection("verifiedRestaurants")
-            .orderBy("restaurantLocation", "asc")
+            .orderBy("restaurantName", "asc")
             .onSnapshot(
                 querySnapshot => {
                     const restaurants = []
@@ -128,22 +128,23 @@ const RestaurantItem = () => {
         );
     }
 
-    const enterAbout = (id, restaurantName, restaurantImage, restaurantDescription, restaurantRating) => {
+    const enterAbout = ({restaurantImage, restaurantName, restaurantDescription, restaurantRating, restaurantLocation }, id ) => {
         navigation.navigate('RestaurantDetails', {
             id,
             restaurantName,
             restaurantImage,
             restaurantDescription,
             restaurantRating,
+            restaurantLocation
         });
     }
 
     return (
         <View className="mb-1">
-            {restaurants && restaurants.map(({ data: { restaurantImage, restaurantName, restaurantDescription, restaurantRating }, id }) => (
+            {restaurants && restaurants.map(({ data: { restaurantImage, restaurantName, restaurantDescription, restaurantRating, restaurantLocation }, id }) => (
                 <TouchableOpacity onPress={enterAbout} key={id} activeOpacity={0.8} className="mt-2 p-3 bg-white">
                     <RestaurantImage image={restaurantImage} />
-                    <RestaurantInfo name={restaurantName} rating={restaurantRating} />
+                    <RestaurantInfo name={restaurantName} rating={restaurantRating} location={restaurantLocation} />
                 </TouchableOpacity>
             ))}
         </View>
@@ -166,7 +167,7 @@ const RestaurantInfo = (props) => (
     <View className="flex-row justify-between items-center mt-1">
         <View>
             <Text className="font-bold text-sm" style={{ color: "#2E2828" }}>{props.name}</Text>
-            <Text className="text-xs text-gray-500">30-45 min</Text>
+            <Text className="text-xs text-gray-500">Nearby: {props.location}</Text>
         </View>
         <View className="bg-gray-100 h-7 w-7 rounded-full justify-center items-center">
             <Text className="text-xs ">{props.rating}</Text>

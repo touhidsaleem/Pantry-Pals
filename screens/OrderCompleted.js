@@ -1,15 +1,37 @@
-import { View, Text, ScrollView, Image } from 'react-native'
-import React from 'react'
+import Reactr from "react";
+import { View, Text, SafeAreaView, ScrollView, Image } from "react-native";
+import LottieView from "lottie-react-native";
 import { Divider } from '@rneui/themed'
 
-const OrderExpand = () => {
+export default function OrderCompleted() {
+
   return (
-    <View className="flex-1 justify-center items-center p-5 ">
-      <View className="w-full h-5/6 p-5 rounded-md" style={{elevation: 0.5}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+      {/* green checkmark */}
+      <View
+        style={{
+          margin: 15,
+          alignItems: "center",
+          height: "100%",
+        }}
+        className="mt-10"
+      >
+        <LottieView
+          style={{ height: 100, alignSelf: "center" }}
+          source={require("../assets/animations/check-mark.json")}
+          autoPlay
+          speed={0.5}
+          loop={false}
+        />
         <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-          Your order at {'Beachside Rhino'} has been Deliverd for {'₹ 765'}
+          Your order at {'Beachside Rhino'} has been placed for {'₹ 765'}
         </Text>
         <ScrollView>
+          {/* <MenuItems
+          foods={lastOrder.items}
+          hideCheckbox={true}
+          marginLeft={10}
+        /> */}
           <View>
             <View className="flex-row justify-between items-center mt-2">
               <View className="flex-row">
@@ -55,11 +77,15 @@ const OrderExpand = () => {
             </View>
             <Divider width={0.5} style={{ marginTop: 10, marginHorizontal: 10 }} />
           </View>
+
+          <LottieView
+            style={{ height: 200, alignSelf: "center" }}
+            source={require("../assets/animations/cooking.json")}
+            autoPlay
+            speed={0.5}
+          />
         </ScrollView>
-
       </View>
-    </View>
-  )
+    </SafeAreaView>
+  );
 }
-
-export default OrderExpand;

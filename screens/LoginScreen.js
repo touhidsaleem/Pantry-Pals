@@ -19,6 +19,7 @@ const LoginScreen = ({ navigation, userData }) => {
   const [message, showMessage] = useState();
   const attemptInvisibleVerification = true;
 
+
   useEffect(() => {
     const unsubscirbe = auth.onAuthStateChanged((authUser) => {
       console.log(authUser);
