@@ -4,6 +4,7 @@ Our app is designed to cater to both restaurant owners and customers, streamlini
 
 Modules:
 1. Restaurant Owner:
+
 Login Screen:
 Secure login using a phone number for authentication.
 Firebase integration for seamless and secure verification.
@@ -20,6 +21,7 @@ Create and manage your restaurant by adding essential information.
 Add your restaurant's menu items to showcase to potential customers.
 
 2. Customer:
+   
 Login Screen:
 Secure login using a phone number for authentication.
 Firebase integration for seamless and secure verification.
